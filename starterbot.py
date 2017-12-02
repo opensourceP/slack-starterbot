@@ -9,7 +9,7 @@ BOT_ID = os.environ.get("BOT_ID") #봇 아이디
 # constants
 AT_BOT = "<@" + BOT_ID + ">" 
 EXAMPLE_COMMAND = "do" #기본 명령어 do
-BOKBOT = "bobot" #지호 설정
+BOKBOT = "bokbot" #지호 설정
 CHOBOT = "chobot" #소연 설정
 BABOT = "babot" #영서 설정
 STARTER = "starter" #여름 설정
@@ -25,7 +25,7 @@ def bokbot(command,channel):
 
 
 def chobot(command,channel):
-    #수연 - 추가할 기능
+    #소연 - 추가할 기능
      slack_client.api_call("chat.postMessage", channel=channel, #슬랙 채널에 대답 쓰기
                           text=response, as_user=True)
 
@@ -50,11 +50,11 @@ def handle_command(command, channel): #입력한 command
     response = "Not sure what you mean. Use the *" + EXAMPLE_COMMAND + \
                "* command with numbers, delimited by spaces."
 
-    #압력받은 커멘드가 "do"이면 실행
+    #입력받은 커멘드가 "do"이면 실행
     if command.startswith(EXAMPLE_COMMAND):
         response = "Sure...write some more code then I can do that!" #대답 설정
     elif command.startswith(BOKBOT): #지호 커맨드와 일치하면 실행
-        babot(command,channel)
+        bokbot(command,channel)
     elif command.startswith(CHOBOT):
         chobot(command,channel)
     elif command.startswith(BABOT):
