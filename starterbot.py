@@ -9,10 +9,36 @@ BOT_ID = os.environ.get("BOT_ID") #봇 아이디
 # constants
 AT_BOT = "<@" + BOT_ID + ">" 
 EXAMPLE_COMMAND = "do" #기본 명령어 do
+BOKBOT = "bobot" #지호 설정
+CHOBOT = "chobot" #소연 설정
+BABOT = "babot" #영서 설정
+STARTER = "starter" #여름 설정
 
 # instantiate Slack & Twilio clients
 #slack_client = "xoxb-279681170305-OHdDBMEgHsrvGkyjmtrVNBEi"
 slack_client = SlackClient(os.environ.get('SLACK_BOT_TOKEN')) #봇 토큰으로 슬랙클라이언트 설정
+
+def bokbot(command,channel):
+    #지호 - 추가할 기능
+     slack_client.api_call("chat.postMessage", channel=channel, #슬랙 채널에 대답 쓰기
+                          text=response, as_user=True)
+
+
+def chobot(command,channel):
+    #수연 - 추가할 기능
+     slack_client.api_call("chat.postMessage", channel=channel, #슬랙 채널에 대답 쓰기
+                          text=response, as_user=True)
+
+def babot(command,channel):
+    #영서 - 추가할 기능
+     slack_client.api_call("chat.postMessage", channel=channel, #슬랙 채널에 대답 쓰기
+                          text=response, as_user=True)
+
+def starter(command,channel):
+    #여름 - 추가할 기능
+     slack_client.api_call("chat.postMessage", channel=channel, #슬랙 채널에 대답 쓰기
+                          text=response, as_user=True)
+
 
 def handle_command(command, channel): #입력한 command 
     """
@@ -27,8 +53,16 @@ def handle_command(command, channel): #입력한 command
     #압력받은 커멘드가 "do"이면 실행
     if command.startswith(EXAMPLE_COMMAND):
         response = "Sure...write some more code then I can do that!" #대답 설정
-    slack_client.api_call("chat.postMessage", channel=channel, #슬랙 채널에 대답 쓰기
-                          text=response, as_user=True)
+    elif command.startswith(BOKBOT): #지호 커맨드와 일치하면 실행
+        babot(command,channel)
+    elif command.startswith(CHOBOT):
+        chobot(command,channel)
+    elif command.startswith(BABOT):
+        babot(command,channel)
+    elif command.startswith(STARTER):
+        starter(command,channel)
+
+
 
 
 def parse_slack_output(slack_rtm_output): #입력 받은 것으로 채널과 커멘드로 나눠서 반환
