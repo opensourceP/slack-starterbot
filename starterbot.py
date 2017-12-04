@@ -31,8 +31,8 @@ def chobot(command,channel):
 
 def babot(command,channel):
     #영서 - 추가할 기능
-     lunchlist=['pasta','bibimbab','school food','sushi','bulgogi','pizza']
-     response = 'I recommend %s~!' %lunchlist[random.randint(0,len(lunchlist)-1)]
+     lunchlist=lunchlist=['pasta','bibimbab','school food','sushi','bulgogi','pizza','hamberger','sandwich','kimchijjigae','haejangguk','doenjangjjigae','ssalguksu','galbitang','tteokbokki','gimbab','ramen','jajangmyeon','jjamppong','kimchi fried rice','naengmyeon','japaness rice served with toppings','pork cutlet','dakgalbi','chicken','convenience store food']               
+     response='I recommend %s~!' %lunchlist[random.randint(0,len(lunchlist)-1)]
      slack_client.api_call("chat.postMessage", channel=channel, #슬랙 채널에 대답 쓰기
                           text=response, as_user=True)
 
