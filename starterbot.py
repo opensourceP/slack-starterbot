@@ -1,5 +1,7 @@
 import os
 import time
+import requests
+from bs4 import BeautifulSoup
 from slackclient import SlackClient #슬랙클라이언트 패키지 
 
 
@@ -18,25 +20,16 @@ STARTER = "starter" #여름 설정
 #slack_client = "xoxb-279681170305-OHdDBMEgHsrvGkyjmtrVNBEi"
 slack_client = SlackClient(os.environ.get('SLACK_BOT_TOKEN')) #봇 토큰으로 슬랙클라이언트 설정
 
-def bokbot(command,channel):
-    #지호 - 추가할 기능
-     slack_client.api_call("chat.postMessage", channel=channel, #슬랙 채널에 대답 쓰기
-                          text=response, as_user=True)
-
-
-def chobot(command,channel):
-    #수연 - 추가할 기능
-     slack_client.api_call("chat.postMessage", channel=channel, #슬랙 채널에 대답 쓰기
-                          text=response, as_user=True)
-
-def babot(command,channel):
-    #영서 - 추가할 기능
-     slack_client.api_call("chat.postMessage", channel=channel, #슬랙 채널에 대답 쓰기
-                          text=response, as_user=True)
 
 def starter(command,channel):
     #여름 - 추가할 기능
-     slack_client.api_call("chat.postMessage", channel=channel, #슬랙 채널에 대답 쓰기
+    command2, channel = parse_slack_output(slack_client.rtm_read())
+    url="https://github.com/topics/"+"command2"
+    res=requests.get(url)
+    soup=BeautifulSoup(res.text,"html.parser");
+    
+
+    slack_client.api_call("chat.postMessage", channel=channel, #슬랙 채널에 대답 쓰기
                           text=response, as_user=True)
 
 
