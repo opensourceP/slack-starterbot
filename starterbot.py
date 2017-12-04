@@ -24,7 +24,7 @@ def bokbot(command,channel):
 
 
 def chobot(command,channel):
-    year=int(input("Input year:"))
+	year=int(input("Input year:"))
 	month=int(input("Input month:"))
 	day=int(input("Input day:"))
 	hour=int(input("Input hour:"))
@@ -37,25 +37,25 @@ def chobot(command,channel):
 		total=total+365
 
 		if year_i%400==0:
-	        total=total+1 #윤년=366일
-	    elif year_i%100==0:
-	        pass
-	    elif year_i%4==0:
-	        total=total+1 #윤년
-	    else:
-	        pass
+			total=total+1
+		elif year_i%100==0:
+			pass
+		elif year_i%4==0:
+			total=total+1 
+		else:
+			pass
 
 	for month_i in range(1,month):
-    	total=total+month_days[month_i]
+		total=total+month_days[month_i]
 
-	total=total+day #00년도 00월 00일을 일(day)로 표현
+	total=total+day 
 
 	if total%7==0: #SUN
 		if hour<=8:
 			response='sleeping...'
 		else:
 			response='taking a rest...'
-    elif total%7==1: #MON
+	elif total%7==1: #MON
 		if hour<=8:
 			response='sleeping...'
 		else:
