@@ -1,5 +1,7 @@
 import os
 import time
+import urllib.request
+import time
 from slackclient import SlackClient #슬랙클라이언트 패키지 
 
 
@@ -22,8 +24,27 @@ def bokbot(command,channel):
     #지호 - 추가할 기능
      slack_client.api_call("chat.postMessage", channel=channel, #슬랙 채널에 대답 쓰기
                           text=response, as_user=True)
+     print("오늘의 날씨를 알려드리는 bokbot 입니다!")
+     location_names = ['서울/경기', '서해5도', '강원/영서', '강원/영동', '충청북도', '충청남도',
+                  '경상북도', '경상남도', '울릉/독도', '전라북도', '전라남도', '제주']
+     page=urllib.request.urlopen("http://weather.naver.com/rgn/cityWetrMain.nhn")
+     text=page.open().decode("utf8")
+     while 1:
+          option=1
+          for location in location_names:
+          print(str(option)+". "+location)
+               option=option+1
+          print(str(option)+". 없음")
+          L = int(input("지역을 입력해주세요(숫자): "))
+          if location == option:
+               break
+          elif L == 1: # 1. 서울/경기 지역
+               
+               
+               
+          
 
-
+     
 def chobot(command,channel):
     #소연 - 추가할 기능
      slack_client.api_call("chat.postMessage", channel=channel, #슬랙 채널에 대답 쓰기
