@@ -11,7 +11,7 @@ AT_BOT = "<@" + BOT_ID + ">"
 EXAMPLE_COMMAND = "do" #기본 명령어 do
 BOKBOT = "bokbot" #지호 설정
 CHOBOT = "chobot" #소연 설정
-BABOT = "babot" #영서 설정
+BABOT = "hungry" #영서 설정
 STARTER = "starter" #여름 설정
 
 # instantiate Slack & Twilio clients
@@ -31,6 +31,7 @@ def chobot(command,channel):
 
 def babot(command,channel):
     #영서 - 추가할 기능
+     lunchlist=[u'짜장면',u'냉면',u'학식',u'초밥',u'김치찌개',u'제육볶음']
      slack_client.api_call("chat.postMessage", channel=channel, #슬랙 채널에 대답 쓰기
                           text=response, as_user=True)
 
@@ -47,8 +48,7 @@ def handle_command(command, channel): #입력한 command
         returns back what it needs for clarification.
     """
     #기본 대답설정
-    response = "Not sure what you mean. Use the *" + EXAMPLE_COMMAND + \
-               "* command with numbers, delimited by spaces."
+   response = '오늘의 추천 점심은 %s입니다~!~!~!~!' %lunchlist[random,randint(0,len(lunchlist)-1)]
 
     #입력받은 커멘드가 "do"이면 실행
     if command.startswith(EXAMPLE_COMMAND):
