@@ -59,6 +59,8 @@ def chobot(command,channel):
 			response='watching TV_animal farm'
 		elif today_h==12: # 12:00-12:59
 			response='lunch time'
+		elif today_min>=840 and total_min<=990: # 14:00-16:30
+			response='Jiho=at church. others=taking a rest...'
 		elif today_h==19: # 19:00-19:59
 			response='dinner time'
 		else:
@@ -70,8 +72,10 @@ def chobot(command,channel):
 			response='security programming class'
 		elif total_min>=630 and total_min<=750: # 10:30-12:30
 			response='algorithm and practice'
-		elif total_min>=751 and total_min<=810: # 12:31-13:30
+		elif total_min>=751 and total_min<810: # 12:31-13:29
 			response='lunch time'
+		elif total_min>=810 and total_min<=1110: # 13:30-18:30
+			response='Jiho=part time job. others=taking a rest...'
 		elif today_h==19: # 19:00-19:59
 			response='dinner time'
 		else:
@@ -98,8 +102,10 @@ def chobot(command,channel):
 			response='security programming class'
 		elif total_min>=630 and total_min<=750: # 10:30-12:30
 			response='algorithm and practice'
-		elif total_min>=751 and total_min<=810: # 12:31-13:30
+		elif total_min>=751 and total_min<810: # 12:31-13:29
 			response='lunch time'
+		elif total_min>=810 and total_min<=1110: # 13:30-18:30
+			response='Jiho=part time job. others=taking a rest...'
 		elif today_h==19: # 7:00-7:59
 			response='dinner time'
 		else:
@@ -126,6 +132,8 @@ def chobot(command,channel):
 			response='sleeping...'
 		elif today_h==12: # 12:00-12:59
 			response='lunch time'
+		elif total_min>=810 and total_min<=1110: # 13:30-18:30
+			response='Jiho=part time job. others=taking a rest...'
 		elif today_h==19: # 19:00-19:59
 			response='dinner time'
 		else:
