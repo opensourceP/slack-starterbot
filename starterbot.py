@@ -56,13 +56,13 @@ def chobot(command,channel):
 		if today_h<8: # 00:00-7:59
 			response='sleeping...'
 		elif total_min>=570 and total_min<=630: # 9:30-10:30
-			response='watching TV_animal farm'
+			response='soyeon=watching TV_animal farm. others=taking a rest...'
 		elif today_h==12: # 12:00-12:59
-			response='lunch time'
-		elif today_min>=840 and total_min<=990: # 14:00-16:30
-			response='Jiho=at church. others=taking a rest...'
+			response='yeongseo=part time job. others=lunch time'
 		elif today_h==19: # 19:00-19:59
-			response='dinner time'
+			response='yeongseo=part time job. others=dinner time'
+		elif today_h>=11 and today_h<=21:
+			response='yeongseo=part time job. others=taking a rest...'
 		else:
 			response='taking a rest...'
 	elif total%7==1: #MON
@@ -78,6 +78,8 @@ def chobot(command,channel):
 			response='Jiho=part time job. others=taking a rest...'
 		elif today_h==19: # 19:00-19:59
 			response='dinner time'
+		elif today_h==22: # 22:00-22:59
+			response='yeongseo=watching drama. others=taking a rest...'
 		else:
 			response='taking a rest...'
 	elif total%7==2: #TUE
@@ -93,6 +95,10 @@ def chobot(command,channel):
 			response='English writing class'
 		elif today_h==19: # 19:00-19:59
 			response='dinner time'
+		elif today_h==22: # 22:00-22:59
+			response='yeongseo=watching drama. others=taking a rest...'
+		elif today_h==23: # 23:00-23:59
+			response="yeongseo=watching TV_KANG's restaurent. others=taking a rest..."
 		else:
 			response='taking a rest...'
 	elif total%7==3: #WED
@@ -122,7 +128,7 @@ def chobot(command,channel):
 		elif today_h==14: # 14:00-14:59
 			response='English writing class'
 		elif total_min>=900 and total_min<=990: # 3:00-4:30
-			response='world history class'
+			response='soyeon,yeongseo=world history class. others=taking a rest...'
 		elif today_h==19: # 19:00-19:59
 			response='dinner time'
 		else:
@@ -136,15 +142,19 @@ def chobot(command,channel):
 			response='Jiho=part time job. others=taking a rest...'
 		elif today_h==19: # 19:00-19:59
 			response='dinner time'
+		elif today_h==23: # 23:00-23:59
+			response='yeongseo=watching TV_I live alone. others=taking a rest...'
 		else:
 			response='taking a rest...'    
 	elif total%7==6: #SAT
 		if today_h<8: # 00:00-7:59
 			response='sleeping...'
 		elif today_h==12: # 12:00-12:59
-			response='lunch time'
+			response='yeongseo=part time job. others=lunch time'
 		elif today_h==19: # 19:00-19:59
-			response='dinner time'
+			response='yeongseo=part time job. others=dinner time'
+		elif today_h>=11 and today_h<=21:
+			response='yeongseo=part time job. others=taking a rest...'
 		else:
 			response='taking a rest...'
 
