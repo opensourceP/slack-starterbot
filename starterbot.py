@@ -32,7 +32,7 @@ def bokbot(command,channel):
      elif temp >= 17 and temp < 20:
           response = "A thin sweater, cardigan, hoodies with jeans, cotton pants, or trousers would do good today! :)"
      elif temp >= 12 and temp < 17:
-          response = "Outers such as a jacket, or a cardigan would come in handy ^^")
+          response = "Outers such as a jacket, or a cardigan would come in handy ^^"
      elif temp >= 6 and temp < 9:
           response = "Today a thick hoodie, sweater, coat, leather jackets, and jeans would be suitable. Watch out for the coldness *0*") 
      elif temp < 6:
