@@ -20,7 +20,7 @@ slack_client = SlackClient(os.environ.get('SLACK_BOT_TOKEN'))
 
 def bokbot(command,channel):
      
-     #temp=input("오늘의 기온을 입력해주세요(섭씨온도(℃): ")
+     #temp=input("오늘의 기온을 입력해주세요(섭씨온도: ")
      temp=10
      if temp >= 27:
           response = "오늘은 나시티, 반팔 티셔츠, 반바지, 민소매 옷을 입기에 적절한 날이네요! :)"
