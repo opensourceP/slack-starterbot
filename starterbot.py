@@ -2,6 +2,7 @@ import os
 import time
 from slackclient import SlackClient 
 import random
+from datetime import datetime
 
 # starterbot's ID as an environment variable
 BOT_ID = os.environ.get("BOT_ID") 
@@ -24,16 +25,16 @@ def bokbot(command,channel):
 
 
 def chobot(command,channel):
-	year=int(input("Input year:"))
-	month=int(input("Input month:"))
-	day=int(input("Input day:"))
-	hour=int(input("Input hour:"))
-	minute=int(input("Input minute:"))
+	today_y=datetime.today().year
+	today_m=datetime.today().month
+	today_d=datetime.today().day
+	today_h=datetime.today().hour
+	today_min=datetime.today().minute
 
 	month_days=[0,31,28,31,30,31,30,31,30,31,30,31,30]
 	total=0;
 
-	for year_i in range(1,year):
+	for year_i in range(1,today_y):
 		total=total+365
 
 		if year_i%400==0:
@@ -45,43 +46,43 @@ def chobot(command,channel):
 		else:
 			pass
 
-	for month_i in range(1,month):
+	for month_i in range(1,today_m):
 		total=total+month_days[month_i]
 
-	total=total+day 
+	total=total+today_d 
 
 	if total%7==0: #SUN
-		if hour<=8:
+		if today_h<=8:
 			response='sleeping...'
 		else:
 			response='taking a rest...'
 	elif total%7==1: #MON
-		if hour<=8:
+		if today_h<=8:
 			response='sleeping...'
 		else:
 			response='taking a rest...'
 	elif total%7==2: #TUE
-		if hour<=8:
+		if today_h<=8:
 			response='sleeping...'
 		else:
 			response='taking a rest...'
 	elif total%7==3: #WED
-		if hour<=8:
+		if today_h<=8:
 			response='sleeping...'
 		else:
 			response='taking a rest...'
 	elif total%7==4: #THU
-		if hour<=8:
+		if today_h<=8:
 			response='sleeping...'
 		else:
 			response='taking a rest...'
 	elif total%7==5: #FRI
-		if hour<=8:
+		if today_h<=8:
 			response='sleeping...'
 		else:
 			response='taking a rest...'    
 	elif total%7==6: #SAT
-		if hour<=8:
+		if today_h<=8:
 			response='sleeping...'
 		else:
 			response='taking a rest...'
