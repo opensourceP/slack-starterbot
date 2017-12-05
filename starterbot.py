@@ -2,6 +2,8 @@ import os
 import time
 from slackclient import SlackClient 
 import random
+import requests
+from bs4 import BeautifulSoup
 
 # starterbot's ID as an environment variable
 BOT_ID = os.environ.get("BOT_ID") 
@@ -19,9 +21,13 @@ STARTER = "starter"
 slack_client = SlackClient(os.environ.get('SLACK_BOT_TOKEN')) 
 
 def bokbot(command,channel):
-     
-     #temp=input("Please insert today's temperature(Celcius): ")
-     temp=10
+     url="https://search.daum.net/search?w=tot&DA=YZR&t__nil_searchbox=btn&sug=&sugo=&q=%EA%B4%91%EC%A7%84%EA%B5%AC+%EB%82%A0%EC%94%A8"
+     res=requests.get(url)
+     Soup=BeautifulSoup(res.text,'html.parser')
+     nav=Soup.find("strong",{'class':'txt_temp'})
+     str=nav.get_text()
+     t=str[0]
+     temp=int(t)
      if temp >= 27:
 	  response = "Today you should wear a short-sleeve t-shirt, tanktop, sleevless shirt, and shorts. It is a hot day *.*"
 
