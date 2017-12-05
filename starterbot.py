@@ -2,6 +2,8 @@ import os
 import time
 from slackclient import SlackClient 
 import random
+import requests
+from bs4 import BeautifulSoup
 
 # starterbot's ID as an environment variable
 BOT_ID = os.environ.get("BOT_ID") 
@@ -9,7 +11,7 @@ BOT_ID = os.environ.get("BOT_ID")
 # constants
 AT_BOT = "<@" + BOT_ID + ">" 
 EXAMPLE_COMMAND = "do" 
-BOKBOT = "bokbot" 
+BOKBOT = "weather" 
 CHOBOT = "chobot" 
 BABOT = "hungry" 
 STARTER = "starter" 
@@ -19,24 +21,30 @@ STARTER = "starter"
 slack_client = SlackClient(os.environ.get('SLACK_BOT_TOKEN')) 
 
 def bokbot(command,channel):
-     
-     temp=input("오늘의 기온을 입력해주세요(섭씨온도(℃): ")
-     if temp >= 27:
-          response = "오늘은 나시티, 반팔 티셔츠, 반바지, 민소매 옷을 입기에 적절한 날이네요! :)"
-     elif temp >= 23 and temp < 27:
-          response = "오늘은 반팔, 얇은 셔츠, 얇은 긴팔, 반바지, 면바지를 입기에 적절한 날이네요~ :)"
-     elif temp >= 20 and temp < 23:
-          response = "오늘은 긴팔티, 가디건, 얇은 후드티, 면바지, 슬랙스, 스키니 등을 입기에 적절한 날이네요!"
-     elif temp >= 17 and temp < 20:
-          response = "얇은 니트, 가디건, 후드티나 맨투맨과 청바지, 면바지, 슬랙스 등을 매치해서 입으면 좋을 날이에요 ^ㅠ^"
-     elif temp >= 12 and temp < 17:
-          response = "자켓, 셔츠 가디건이나 야상 같은 겉옷을 챙기시면 좋을 날이에요!"
-     elif temp >= 6 and temp < 9:
-          response = "코트나 가죽자켓 같은 겉옷에 맨투맨, 니트, 후드티 등을 속에 입으면 적당할 날이에요!"
-     elif temp < 6:
-          response = "패딩 같은 두꺼운 겉옷에 장갑, 목도리도 착용해야 될 날이에요! 읏추읏추~"
-     slack_client.api_call("chat.postMessage", channel=channel, 
-                          text=response, as_user=True)
+	url="https://search.daum.net/search?w=tot&DA=YZR&t__nil_searchbox=btn&sug=&sugo=&q=%EA%B4%91%EC%A7%84%EA%B5%AC+%EB%82%A0%EC%94%A8"
+	res=requests.get(url)
+	Soup=BeautifulSoup(res.text,'html.parser')
+	nav=Soup.find("strong",{'class':'txt_temp'})
+	str=nav.get_text()
+	t=str.split('℃')
+	temp=int(t[0])
+	response = "The temperature is now " + temp +" degrees."
+	slack_client.api_call("chat.postMessage", channel=channel,text=response, as_user=True)
+	if (temp >= 27):
+		response = "Today you should wear a short-sleeve t-shirt, tanktop, sleevless shirt, and shorts. It is a hot day"
+	elif temp >= 23 and temp < 27:
+		response = "Today you should wear a short-sleeve shirt, t-shirt, shorts, and cotton pants. It's going to be a warm, or maybe even a hot day."
+	elif temp >= 20 and temp < 23:
+		response = "Recommendations for you clothes are long-sleeved shirt, cardigans, thin hoodies, cotton pants, jeans, or trousers."
+	elif temp >= 17 and temp < 20:
+		response = "A thin sweater, cardigan, hoodies with jeans, cotton pants, or trousers would do good today! :)"
+	elif temp >= 12 and temp < 17:
+		response = "Outers such as a jacket, or a cardigan would come in handy ^^"
+	elif temp >= 6 and temp < 9:
+		response = "Today a thick hoodie, sweater, coat, leather jackets, and jeans would be suitable. Watch out for the coldness *0*"
+	elif temp < 6:
+		response = "Thick clothings are strongly recommended.. Wear a scarf and gloves as well."
+	slack_client.api_call("chat.postMessage", channel=channel,text=response, as_user=True)
           
      
 
@@ -54,27 +62,23 @@ def starter(command,channel):
      slack_client.api_call("chat.postMessage", channel=channel, 
                           text=response, as_user=True)
 
+def exception(command,channel):
+	response="Try to type weather or hungry"
+	slack_client.api_call("chat.postMessage", channel=channel,
+                          text=response, as_user=True)
 
 def handle_command(command, channel): 
-    """
-        Receives commands directed at the bot and determines if they
-        are valid commands. If so, then acts on the commands. If not,
-        returns back what it needs for clarification.
-    """
-    response = "Not sure what you mean. Use the *" + EXAMPLE_COMMAND + \
-               "* command with numbers, delimited by spaces."
-
-    if command.startswith(EXAMPLE_COMMAND):
-        response = "Sure...write some more code then I can do that!" 
-    elif command.startswith(BOKBOT): 
-        bokbot(command,channel)
-    elif command.startswith(CHOBOT):
-        chobot(command,channel)
-    elif command.startswith(BABOT):
-        babot(command,channel)
-    elif command.startswith(STARTER):
-        starter(command,channel)
-
+	if command.startswith(BOKBOT): 
+		bokbot(command,channel)
+	elif command.startswith(CHOBOT):
+		chobot(command,channel)
+	elif command.startswith(BABOT):
+		babot(command,channel)
+	elif command.startswith(STARTER):
+		starter(command,channel)
+	else:
+		exception(command,channel)
+    
 
 
 
