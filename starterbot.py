@@ -50,40 +50,93 @@ def chobot(command,channel):
 		total=total+month_days[month_i]
 
 	total=total+today_d 
+	total_min=today_h*60+today_min
 
 	if total%7==0: #SUN
-		if today_h<=8:
+		if today_h<8: # 00:00-7:59
 			response='sleeping...'
+		elif total_min>=570 and total_min<=630: # 9:30-10:30
+			response='watching TV_animal farm'
+		elif today_h==12: # 12:00-12:59
+			response='lunch time'
+		elif today_h==19: # 19:00-19:59
+			response='dinner time'
 		else:
 			response='taking a rest...'
 	elif total%7==1: #MON
-		if today_h<=8:
+		if today_h<8: # 00:00-7:59
 			response='sleeping...'
+		elif total_min>=540 and total_min<630: # 9:00-10:30
+			response='security programming class'
+		elif total_min>=630 and total_min<=750: # 10:30-12:30
+			response='algorithm and practice'
+		elif total_min>=751 and total_min<=810: # 12:31-13:30
+			response='lunch time'
+		elif today_h==19: # 19:00-19:59
+			response='dinner time'
 		else:
 			response='taking a rest...'
 	elif total%7==2: #TUE
-		if today_h<=8:
+		if today_h<8: # 00:00-7:59
 			response='sleeping...'
+		elif total_min>=540 and total_min<630: # 9:00-10:30
+			response='introduction to open source SW class'
+		elif total_min>=630 and total_min<=720: # 10:30-12:00
+			response='assembly language class'
+		elif total_min>=721 and total_min<=780: # 12:01-13:00
+			response='lunch time'
+		elif today_h==14: # 14:00-14:59
+			response='English writing class'
+		elif today_h==19: # 19:00-19:59
+			response='dinner time'
 		else:
 			response='taking a rest...'
 	elif total%7==3: #WED
-		if today_h<=8:
+		if today_h<8: # 00:00-7:59
 			response='sleeping...'
+		elif total_min>=540 and total_min<630: # 9:00-10:30
+			response='security programming class'
+		elif total_min>=630 and total_min<=750: # 10:30-12:30
+			response='algorithm and practice'
+		elif total_min>=751 and total_min<=810: # 12:31-13:30
+			response='lunch time'
+		elif today_h==19: # 7:00-7:59
+			response='dinner time'
 		else:
 			response='taking a rest...'
 	elif total%7==4: #THU
-		if today_h<=8:
+		if today_h<8: # 00:00-7:59
 			response='sleeping...'
+		elif total_min>=540 and total_min<630: # 9:00-10:30
+			response='introduction to open source SW class'
+		elif total_min>=630 and total_min<=720: # 10:30-12:00
+			response='assembly language class'
+		elif total_min>=721 and total_min<=780: # 12:01-13:00
+			response='lunch time'
+		elif today_h==14: # 14:00-14:59
+			response='English writing class'
+		elif total_min>=900 and total_min<=990: # 3:00-4:30
+			response='world history class'
+		elif today_h==19: # 19:00-19:59
+			response='dinner time'
 		else:
 			response='taking a rest...'
 	elif total%7==5: #FRI
-		if today_h<=8:
+		if today_h<8: # 00:00-7:59
 			response='sleeping...'
+		elif today_h==12: # 12:00-12:59
+			response='lunch time'
+		elif today_h==19: # 19:00-19:59
+			response='dinner time'
 		else:
 			response='taking a rest...'    
 	elif total%7==6: #SAT
-		if today_h<=8:
+		if today_h<8: # 00:00-7:59
 			response='sleeping...'
+		elif today_h==12: # 12:00-12:59
+			response='lunch time'
+		elif today_h==19: # 19:00-19:59
+			response='dinner time'
 		else:
 			response='taking a rest...'
 
