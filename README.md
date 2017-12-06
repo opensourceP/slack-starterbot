@@ -37,7 +37,7 @@ Maplebot is working on [https://maplestoryworkspace.slack.com.] by the team mapl
  You will get a reply that will help you decide on your clothings for today's weather!
  
  <p align="left">
-  <img width="735" height="136" src="./weather.png">
+  <img width="735" height="136" src="./weater.png">
 </p>
 
 3) Exception
