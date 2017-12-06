@@ -17,7 +17,9 @@ Maplebot is working on [https://maplestoryworkspace.slack.com.] by the team mapl
 
  This function is a random function of our lunch menus, which are always our worries. It randomly selects one of the pre-made menus and searches for restaurants around Sejong University from [https://www.naver.com], using crawling technique.If you want this function, please enter ' hungry '!
  
- https://github.com/opensourceP/slack-starterbot/blob/master/hungry.png
+<p align="left">
+  <img width="360" height="700" src="./hungry.png">
+</p>
  
 
 2) Schedule
