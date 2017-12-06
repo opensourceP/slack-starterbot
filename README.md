@@ -15,7 +15,8 @@ Maplebot is working on [https://maplestoryworkspace.slack.com.] by the team mapl
 
 1) Hungry
 
- This function is a random function of our lunch menus, which are always our worries. It randomly selects one of the pre-made menus and searches for restaurants around Sejong University. If you want this function, please enter ' hungry '!
+ This function is a random function of our lunch menus, which are always our worries. It randomly selects one of the pre-made menus and searches for restaurants around Sejong University from [https://www.naver.com], using crawling technique.If you want this function, please enter ' hungry '!
+ 
 
 2) Schedule
 
