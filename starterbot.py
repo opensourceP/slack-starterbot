@@ -10,7 +10,7 @@ from datetime import datetime
 BOT_ID = os.environ.get("BOT_ID") 
 
 # constants
-AT_BOT = "<@" + BOT_ID + ">" 
+AT_BOT = "<@" + "U8ADY32F6" + ">" 
 EXAMPLE_COMMAND = "do" 
 BOKBOT = "weather" 
 CHOBOT = "schedule" 
@@ -186,19 +186,7 @@ def chobot(command,channel):
                           text=response, as_user=True)
 
 def babot(command,channel):
-     lunchlist=lunchlist=['pasta','bibimbab','school food','sushi','bulgogi','pizza','hamberger','sandwich','kimchijjigae','haejangguk','doenjangjjigae','ssalguksu','galbitang','tteokbokki','gimbab','ramen','jajangmyeon','jjamppong','kimchi fried rice','naengmyeon','japaness rice served with toppings','pork cutlet','dakgalbi','chicken','convenience store food']               
-     response='I recommend %s~!' %lunchlist[random.randint(0,len(lunchlist)-1)]
-     slack_client.api_call("chat.postMessage", channel=channel, 
-                          text=response, as_user=True)
 
-def starter(command,channel):
-     slack_client.api_call("chat.postMessage", channel=channel, 
-                          text=response, as_user=True)
-
-def exception(command,channel):
-	response="Try to type weather or hungry"
-	slack_client.api_call("chat.postMessage", channel=channel,
-                          text=response, as_user=True)
 
 def handle_command(command, channel): 
 	if command.startswith(BOKBOT): 
