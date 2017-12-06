@@ -9,7 +9,7 @@ Slackbot is always willing to help, whether that's through direct message or in 
 * To access personal reminders and tasks.
 
 # Maplebot
-Maplebot is working on [https://maplestoryworkspace.slack.com/] by the team maplestory
+Maplebot is working on [https://maplestoryworkspace.slack.com.] by the team maplestory
 
 # Function
 
