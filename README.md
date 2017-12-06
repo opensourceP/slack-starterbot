@@ -13,7 +13,7 @@ Maplebot is working on [https://maplestoryworkspace.slack.com.] by the team mapl
 
 # Function
 
-1) Hungry
+### 1) Hungry
 
  This function is a random function of our lunch menus, which are always our worries. It randomly selects one of the pre-made menus and searches for restaurants around Sejong University from [https://www.naver.com], using crawling technique.If you want this function, please enter ' hungry '!
  
@@ -22,7 +22,7 @@ Maplebot is working on [https://maplestoryworkspace.slack.com.] by the team mapl
 </p>
  
 
-2) Schedule
+### 2) Schedule
 
  This function tells you what the members of ' Maple Story ' are doing now. It will be useful to use this function when you wish to discuss with your team about the project now. If you want to use this function, type ' Schedule '.
  
@@ -30,7 +30,7 @@ Maplebot is working on [https://maplestoryworkspace.slack.com.] by the team mapl
   <img width="735" height="136" src="./schedule.png">
 </p>
 
-3) Weather
+### 3) Weather
 
  Having trouble choosing what to wear every morning? Need recommendations on what to wear according to the temperature?
  Type in 'Weather'.
