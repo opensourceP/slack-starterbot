@@ -4,6 +4,7 @@ from slackclient import SlackClient
 import random
 import requests
 from bs4 import BeautifulSoup
+from datetime import datetime
 
 # starterbot's ID as an environment variable
 BOT_ID = os.environ.get("BOT_ID") 
@@ -12,7 +13,7 @@ BOT_ID = os.environ.get("BOT_ID")
 AT_BOT = "<@" + BOT_ID + ">" 
 EXAMPLE_COMMAND = "do" 
 BOKBOT = "weather" 
-CHOBOT = "chobot" 
+CHOBOT = "schedule" 
 BABOT = "hungry" 
 STARTER = "starter" 
 
@@ -47,6 +48,140 @@ def bokbot(command,channel):
      
 
 def chobot(command,channel):
+        
+        today_y=datetime.today().year 
+        today_m=datetime.today().month 
+        today_d=datetime.today().day
+        today_h=datetime.today().hour
+        today_min=datetime.today().minute   # NOW TIME
+
+        month_days=[0,31,28,31,30,31,30,31,30,31,30,31,30]
+        total=0;
+
+        for year_i in range(1,today_y):
+                total=total+365
+
+                if year_i%400==0:
+                        total=total+1
+                elif year_i%100==0:
+                        pass
+                elif year_i%4==0:
+                        total=total+1
+                else:
+                        pass
+
+        for month_i in range(1,today_m):
+                total=total+month_days[month_i]
+                
+        total=total+today_d  
+        total_min=today_h*60+today_min 
+ 
+        if total%7==0: #SUN
+                if today_h<8: # 00:00-7:59
+                        response='sleeping...' 
+                elif total_min>=570 and total_min<=630: # 9:30-10:30 
+                        response='soyeon=watching TV_animal farm. others=taking a rest...' 
+                elif today_h==12: # 12:00-12:59 
+                        response='yeongseo=part time job. others=lunch time' 
+                elif today_h==19: # 19:00-19:59 
+                        response='yeongseo=part time job. others=dinner time' 
+                elif today_h>=11 and today_h<=21: 
+                        response='yeongseo=part time job. others=taking a rest...' 
+                else: 
+                        response='taking a rest...' 
+        elif total%7==1: #MON 
+                if today_h<8: # 00:00-7:59 
+                        response='sleeping...' 
+                elif total_min>=540 and total_min<630: # 9:00-10:30 
+                        response='security programming class' 
+                elif total_min>=630 and total_min<=750: # 10:30-12:30 
+                        response='algorithm and practice' 
+                elif total_min>=751 and total_min<810: # 12:31-13:29 
+                        response='lunch time' 
+                elif total_min>=810 and total_min<=1110: # 13:30-18:30 
+                        response='Jiho=part time job. others=taking a rest...' 
+                elif today_h==19: # 19:00-19:59 
+                        response='dinner time' 
+                elif today_h==22: # 22:00-22:59 
+                        response='yeongseo=watching drama. others=taking a rest...' 
+                else: 
+                        response='taking a rest...' 
+        elif total%7==2: #TUE 
+                if today_h<8: # 00:00-7:59 
+                        response='sleeping...' 
+                elif total_min>=540 and total_min<630: # 9:00-10:30 
+                        response='introduction to open source SW class' 
+                elif total_min>=630 and total_min<=720: # 10:30-12:00 
+			response='assembly language class' 
+		elif total_min>=721 and total_min<=780: # 12:01-13:00 
+			response='lunch time' 
+		elif today_h==14: # 14:00-14:59 
+			response='English writing class' 
+		elif today_h==19: # 19:00-19:59 
+			response='dinner time' 
+		elif today_h==22: # 22:00-22:59 
+			response='yeongseo=watching drama. others=taking a rest...' 
+		elif today_h==23: # 23:00-23:59 
+			response="yeongseo=watching TV_KANG's restaurent. others=taking a rest..." 
+		else: 
+			response='taking a rest...' 
+	elif total%7==3: #WED 
+		if today_h<8: # 00:00-7:59 
+			response='sleeping...' 
+		elif total_min>=540 and total_min<630: # 9:00-10:30 
+			response='security programming class' 
+		elif total_min>=630 and total_min<=750: # 10:30-12:30 
+			response='algorithm and practice' 
+		elif total_min>=751 and total_min<810: # 12:31-13:29 
+        		response='lunch time' 
+		elif total_min>=810 and total_min<=1110: # 13:30-18:30 
+			response='Jiho=part time job. others=taking a rest...' 
+		elif today_h==19: # 7:00-7:59 
+			response='dinner time' 
+		else: 
+			response='taking a rest...' 
+	elif total%7==4: #THU 
+		if today_h<8: # 00:00-7:59
+                        response='sleeping...' 
+		elif total_min>=540 and total_min<630: # 9:00-10:30 
+			response='introduction to open source SW class' 
+		elif total_min>=630 and total_min<=720: # 10:30-12:00 
+			response='assembly language class' 
+		elif total_min>=721 and total_min<=780: # 12:01-13:00 
+			response='lunch time' 
+		elif today_h==14: # 14:00-14:59 
+			response='English writing class' 
+		elif total_min>=900 and total_min<=990: # 3:00-4:30 
+        		response='soyeon,yeongseo=world history class. others=taking a rest...' 
+		elif today_h==19: # 19:00-19:59 
+                        response='dinner time' 
+                else: 
+                        response='taking a rest...'
+        elif total%7==5: #FRI
+                if today_h<8: # 00:00-7:59
+                        response='sleeping...'
+                elif today_h==12: # 12:00-12:59
+                        response='lunch time'
+                elif total_min>=810 and total_min<=1110: # 13:30-18:30
+                        response='Jiho=part time job. others=taking a rest...'
+                elif today_h==19: # 19:00-19:59
+                        response='dinner time'
+                elif today_h==23: # 23:00-23:59
+                        response='yeongseo=watching TV_I live alone. others=taking a rest...' 
+                else:
+                        response='taking a rest...'
+        elif total%7==6: #SAT
+                if today_h<8: # 00:00-7:59
+                        response='sleeping...'
+                elif today_h==12: # 12:00-12:59
+                        response='yeongseo=part time job. others=lunch time'
+                elif today_h==19: # 19:00-19:59
+                        response='yeongseo=part time job. others=dinner time'
+                elif today_h>=11 and today_h<=21: 
+                        response='yeongseo=part time job. others=taking a rest...' 
+                else: 
+                        response='taking a rest...' 
+
      slack_client.api_call("chat.postMessage", channel=channel, 
                           text=response, as_user=True)
 
