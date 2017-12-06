@@ -5,13 +5,14 @@ import random
 import requests
 from bs4 import BeautifulSoup
 from datetime import datetime
+import yaml
 
 # starterbot's ID as an environment variable
 BOT_ID = os.environ.get("BOT_ID") 
 
 # constants
 AT_BOT = "<@" + "U8ADY32F6" + ">" 
-EXAMPLE_COMMAND = "do" 
+#EXAMPLE_COMMAND = "do" 
 BOKBOT = "weather" 
 CHOBOT = "schedule" 
 BABOT = "hungry" 
@@ -182,11 +183,53 @@ def chobot(command,channel):
                 else: 
                         response='taking a rest...' 
 
+def babot(command,channel):
+	if command.startswith(BABOT):
+		lunchlist=['파스타','치킨','초밥','고기','곱창','떡볶이','회','빵','만두','족발','냉면','국밥','돈가스','중식','라면','불고기']
+		lunch=lunchlist[random.randint(0,len(lunchlist)-1)]
+		a="https://m.store.naver.com/sogum/api/businesses?filterId=s11591591&query=세종대%20"
+		b="&searchQuery=세종대%20맛집&x=126.9783880&y=37.5666100&display=1&deviceType=mobile"
+		url=a+lunch+b
+		q="&start="
+		command={}		
+		for i in range(1,10):
+			query=url+q+str(i)
+			
+			res=requests.get(query)
+			
+			info=res.text
+			info_rast=yaml.load(info)
+
+			try :
+				name=((info_rast['items'][0])['name']).replace("'","\'")
+				category=((info_rast['items'][0])['category']).replace("'","\'")
+
+			except :
+				#name=((info_rast['items'][0])['name']).replace("'","\'")
+				#category=((info_rast['items'][0])['category']).replace("'","\'")
+				name=""
+				category=""			
+
+			if((info).find('"total":0')>1):
+				break
+
+			command[name]=category
+		
+		response="I recommend"+" "+lunch+"\n"
+		for name,category in command.items():
+			response+=name+"("+category+")"+"\n"
+
+		slack_client.api_call("chat.postMessage", channel=channel,text=response, as_user=True)
+
      slack_client.api_call("chat.postMessage", channel=channel, 
                           text=response, as_user=True)
 
 def babot(command,channel):
 
+def exception(command,channel):
+	response="If you want recommendations on your clothings according to the weather, type in 'weather'."+"\n"+"If you want recommendations on what to eat and where to go to eat that food, type in 'hungry'."+"\n"+"If you are curious about what you're teammates are doing right now, type in 'schedule'."
+	slack_client.api_call("chat.postMessage", channel=channel,
+                          text=response, as_user=True)
 
 def handle_command(command, channel): 
 	if command.startswith(BOKBOT): 
