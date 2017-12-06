@@ -22,4 +22,6 @@ Maplebot is working on [https://maplestoryworkspace.slack.com.] by the team mapl
 
 3) Weather
 
-
+ Having trouble choosing what to wear every morning? Need recommendations on what to wear according to the temperature?
+ Type in 'Weather'.
+ You will get a reply that will help you decide on your clothings for today's weather!
