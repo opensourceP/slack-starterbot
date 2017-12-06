@@ -6,7 +6,7 @@ from slackclient import SlackClient
 
 
 
-BOT_NAME = 'bokbot'
+BOT_NAME = 'maplebot'
 slack_client = SlackClient(os.environ.get('SLACK_BOT_TOKEN'))
 
 
