@@ -20,6 +20,8 @@ Maplebot is working on [https://maplestoryworkspace.slack.com.] by the team mapl
 
 2) Schedule
 
+ This function tells you what the members of ' Maple Story ' are doing now. It will be useful to use this function when you wish to discuss with your team about the project now. If you want to use this function, type ' Schedule '.
+
 3) Weather
 
  Having trouble choosing what to wear every morning? Need recommendations on what to wear according to the temperature?
