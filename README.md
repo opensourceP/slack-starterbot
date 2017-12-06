@@ -11,6 +11,19 @@ Slackbot is always willing to help, whether that's through direct message or in 
 # Maplebot
 Maplebot is working on [https://maplestoryworkspace.slack.com.] by the team maplestory
 
+# How to running bot 
+1. setting your token for slack in starterbot.py 
+2. follow under command </br>
+```
+$ apt-get install git python3;
+$ git clone https://github.com/opensourceP/slack-starterbot.git
+$ nohub python3 ./starterbot.py &
+```
+</br>
+nohub command is no console running mod.
+& command is background running.
+
+
 # Function
 
 ### 1) Hungry
