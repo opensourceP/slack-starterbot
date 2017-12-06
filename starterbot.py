@@ -13,16 +13,15 @@ BOT_ID = os.environ.get("BOT_ID")
 # constants
 AT_BOT = "<@" + "U8ADY32F6" + ">" 
 #EXAMPLE_COMMAND = "do" 
-BOKBOT = "weather" 
-CHOBOT = "schedule" 
-BABOT = "hungry" 
-STARTER = "starter" 
+WEATHER = "weather" 
+SCHEDULE = "schedule" 
+HUNGRY = "hungry" 
 
 # instantiate Slack & Twilio clients
 
 slack_client = SlackClient(os.environ.get('SLACK_BOT_TOKEN')) 
 
-def bokbot(command,channel):
+def weather(command,channel):
 	url="https://search.daum.net/search?w=tot&DA=YZR&t__nil_searchbox=btn&sug=&sugo=&q=%EA%B4%91%EC%A7%84%EA%B5%AC+%EB%82%A0%EC%94%A8"
 	res=requests.get(url)
 	Soup=BeautifulSoup(res.text,'html.parser')
@@ -49,7 +48,7 @@ def bokbot(command,channel):
           
      
 
-def chobot(command,channel):
+def scheduler(command,channel):
 
 	today_y=datetime.today().year 
 	today_m=datetime.today().month 
@@ -185,8 +184,8 @@ def chobot(command,channel):
 
 	slack_client.api_call("chat.postMessage", channel=channel,text=response, as_user=True)
 
-def babot(command,channel):
-	if command.startswith(BABOT):
+def lunch(command,channel):
+	if command.startswith(HUNGRY):
 		lunchlist=['파스타','치킨','초밥','고기','곱창','떡볶이','회','빵','만두','족발','냉면','국밥','돈가스','중식','라면','불고기']
 		lunch=lunchlist[random.randint(0,len(lunchlist)-1)]
 		a="https://m.store.naver.com/sogum/api/businesses?filterId=s11591591&query=세종대%20"
@@ -194,7 +193,7 @@ def babot(command,channel):
 		url=a+lunch+b
 		q="&start="
 		command={}		
-		for i in range(1,10):
+		for i in range(1,20):
 			query=url+q+str(i)
 			
 			res=requests.get(query)
@@ -229,14 +228,12 @@ def exception(command,channel):
                           text=response, as_user=True)
 
 def handle_command(command, channel): 
-	if command.startswith(BOKBOT): 
-		bokbot(command,channel)
-	elif command.startswith(CHOBOT):
-		chobot(command,channel)
-	elif command.startswith(BABOT):
-		babot(command,channel)
-	elif command.startswith(STARTER):
-		starter(command,channel)
+	if command.startswith(WEATHER): 
+		weather(command,channel)
+	elif command.startswith(SCHEDULE):
+		scheduler(command,channel)
+	elif command.startswith(HUNGRY):
+		lunch(command,channel)
 	else:
 		exception(command,channel)
     
