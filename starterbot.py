@@ -224,8 +224,6 @@ def babot(command,channel):
      slack_client.api_call("chat.postMessage", channel=channel, 
                           text=response, as_user=True)
 
-def babot(command,channel):
-
 def exception(command,channel):
 	response="If you want recommendations on your clothings according to the weather, type in 'weather'."+"\n"+"If you want recommendations on what to eat and where to go to eat that food, type in 'hungry'."+"\n"+"If you are curious about what you're teammates are doing right now, type in 'schedule'."
 	slack_client.api_call("chat.postMessage", channel=channel,
