@@ -59,7 +59,7 @@ def chobot(command,channel):
         month_days=[0,31,28,31,30,31,30,31,30,31,30,31,30]
         total=0;
 
-        for year_i in range(1,today_y):
+        for year_i in range(1,today_y): #leap year
                 total=total+365
 
                 if year_i%400==0:
@@ -72,10 +72,10 @@ def chobot(command,channel):
                         pass
 
         for month_i in range(1,today_m):
-                total=total+month_days[month_i]
+                total=total+month_days[month_i] # total day
                 
         total=total+today_d  
-        total_min=today_h*60+today_min 
+        total_min=today_h*60+today_min # total time [per minute]
  
         if total%7==0: #SUN
                 if today_h<8: # 00:00-7:59
