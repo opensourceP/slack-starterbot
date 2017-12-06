@@ -19,9 +19,10 @@ $ apt-get install git python3;
 $ git clone https://github.com/opensourceP/slack-starterbot.git
 $ nohub python3 ./starterbot.py &
 ```
-</br>
-nohub command is no console running mod.
+nohub command is no console running mod.</br>
 & command is background running.
+
+</br>
 
 
 # Function
