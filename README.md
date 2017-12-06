@@ -40,7 +40,7 @@ Maplebot is working on [https://maplestoryworkspace.slack.com.] by the team mapl
   <img width="735" height="136" src="./weater.png">
 </p>
 
-3) Exception
+### 4) Exception
 
  <p align="left">
   <img width="735" height="159" src="./exception.png">
