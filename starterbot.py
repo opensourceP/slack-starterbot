@@ -28,9 +28,9 @@ def bokbot(command,channel):
 	Soup=BeautifulSoup(res.text,'html.parser')
 	nav=Soup.find("strong",{'class':'txt_temp'})
 	str=nav.get_text()
-	t=str.split('℃')
+	response = "The temperature is now " + str+"\n"
+	t=str.split('℃')	
 	temp=int(t[0])
-	response = "The temperature is now" + temp + " degrees.\n"
 	if (temp >= 27):
 		response += "Today you should wear a short-sleeve t-shirt, tanktop, sleevless shirt, and shorts. It is a hot day"
 	elif temp >= 23 and temp < 27:
@@ -181,7 +181,9 @@ def chobot(command,channel):
 		elif today_h>=11 and today_h<=21: 
 			response='yeongseo=part time job. others=taking a rest...' 
 		else:
-			response='taking a rest...' 
+			response='taking a rest...'
+
+	slack_client.api_call("chat.postMessage", channel=channel,text=response, as_user=True)
 
 def babot(command,channel):
 	if command.startswith(BABOT):
