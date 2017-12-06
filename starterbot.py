@@ -218,7 +218,7 @@ def lunch(command,channel):
 		
 		response="I recommend"+" "+lunch+"\n"
 		for name,category in command.items():
-			response+=name+"("+category+")"+"\n"
+			response+="-"+name+"("+category+")"+"\n"
 
 		slack_client.api_call("chat.postMessage", channel=channel,text=response, as_user=True)
 
