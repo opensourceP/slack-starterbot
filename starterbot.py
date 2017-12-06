@@ -216,7 +216,7 @@ def lunch(command,channel):
 
 			command[name]=category
 		
-		response="I recommend"+" "+lunch+"\n"
+		response="I recommend"+" "+lunch+"~!\n"
 		for name,category in command.items():
 			response+="-"+name+"("+category+")"+"\n"
 
