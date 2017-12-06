@@ -30,20 +30,21 @@ def bokbot(command,channel):
 	str=nav.get_text()
 	t=str.split('℃')
 	temp=int(t[0])
+	response = "The temperature is now" + temp + " degrees.\n"
 	if (temp >= 27):
-		response = "Today you should wear a short-sleeve t-shirt, tanktop, sleevless shirt, and shorts. It is a hot day"
+		response += "Today you should wear a short-sleeve t-shirt, tanktop, sleevless shirt, and shorts. It is a hot day"
 	elif temp >= 23 and temp < 27:
-		response = "Today you should wear a short-sleeve shirt, t-shirt, shorts, and cotton pants. It's going to be a warm, or maybe even a hot day."
+		response += "Today you should wear a short-sleeve shirt, t-shirt, shorts, and cotton pants. It's going to be a warm, or maybe even a hot day."
 	elif temp >= 20 and temp < 23:
-		response = "Recommendations for you clothes are long-sleeved shirt, cardigans, thin hoodies, cotton pants, jeans, or trousers."
+		response += "Recommendations for you clothes are long-sleeved shirt, cardigans, thin hoodies, cotton pants, jeans, or trousers."
 	elif temp >= 17 and temp < 20:
-		response = "A thin sweater, cardigan, hoodies with jeans, cotton pants, or trousers would do good today! :)"
+		response += "A thin sweater, cardigan, hoodies with jeans, cotton pants, or trousers would do good today! :)"
 	elif temp >= 12 and temp < 17:
-		response = "Outers such as a jacket, or a cardigan would come in handy ^^"
+		response += "Outers such as a jacket, or a cardigan would come in handy ^^"
 	elif temp >= 6 and temp < 9:
-		response = "Today a thick hoodie, sweater, coat, leather jackets, and jeans would be suitable. Watch out for the coldness *0*"
+		response += "Today a thick hoodie, sweater, coat, leather jackets, and jeans would be suitable. Watch out for the coldness *0*"
 	elif temp < 6:
-		response = "Thick clothings are strongly recommended.. Wear a scarf and gloves as well."
+		response += "Thick clothings are strongly recommended.. Wear a scarf and gloves as well."
 	slack_client.api_call("chat.postMessage", channel=channel,text=response, as_user=True)
           
      
