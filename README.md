@@ -27,7 +27,15 @@ $ nohub python3 ./starterbot.py &
 
 # Function
 
-### 1) Hungry
+
+### 1) Exception
+
+ <p align="left">
+  <img width="735" height="159" src="./exception.png">
+</p>
+
+
+### 2) Hungry
 
  This function is a random function of our lunch menus, which are always our worries. It randomly selects one of the pre-made menus and searches for restaurants around Sejong University from [https://www.naver.com], using crawling technique.If you want this function, please enter ' hungry '!
  
@@ -36,7 +44,7 @@ $ nohub python3 ./starterbot.py &
 </p>
  
 
-### 2) Schedule
+### 3) Schedule
 
  This function tells you what the members of ' Maple Story ' are doing now. It will be useful to use this function when you wish to discuss with your team about the project now. If you want to use this function, type ' Schedule '.
  
@@ -44,7 +52,7 @@ $ nohub python3 ./starterbot.py &
   <img width="735" height="136" src="./schedule.png">
 </p>
 
-### 3) Weather
+### 4) Weather
 
  Having trouble choosing what to wear every morning? Need recommendations on what to wear according to the temperature?
  Type in 'Weather'.
@@ -52,10 +60,4 @@ $ nohub python3 ./starterbot.py &
  
  <p align="left">
   <img width="735" height="136" src="./weater.png">
-</p>
-
-### 4) Exception
-
- <p align="left">
-  <img width="735" height="159" src="./exception.png">
 </p>
